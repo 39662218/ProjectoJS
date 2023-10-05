@@ -351,18 +351,3 @@ footer{
 
 
 
-/* correcion de carrito */
-
-.contenedor {
-    overflow: hidden; /* Para limpiar los floats dentro del contenedor */
-}
-
-.contenido {
-    width: 70%; /* Porcentaje del ancho para tu contenido */
-    float: left; /* Flotar a la izquierda */
-}
-
-.carrito {
-    width: 30%; /* Porcentaje del ancho para tu carrito */
-    float: right; /* Flotar a la derecha */
-}

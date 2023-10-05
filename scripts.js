@@ -195,7 +195,7 @@ function actualizarTotalCarrito(){
     document.getElementsByClassName('carrito-precio-total')[0].innerText = '$'+total.toLocaleString("es") + ",00";
 
 }
-
+//// finalizacion codigo carrito ///
 
 
 
@@ -226,7 +226,7 @@ botonItem.style.fontFamily = 'Raleway', sans-serif;
 
 
 // vinculacion con mi json // 
-fetch('packjase.json')
+fetch('archivos.json')
   .then(response => response.json())
   .then(data => {
     
@@ -252,17 +252,16 @@ fetch('packjase.json')
     const searchInput = document.getElementById("search-input");
   
     searchForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // Evita que el formulario se envíe normalmente
-      const searchTerm = searchInput.value.toLowerCase(); // Obtiene el término de búsqueda en minúsculas
+      e.preventDefault(); 
+      const searchTerm = searchInput.value.toLowerCase(); 
   
-      // Realiza la búsqueda en tu archivo JSON
-      fetch('packjase.json')
+     
+      fetch('archivos.json')
         .then(response => response.json())
         .then(data => {
-          // Filtra los elementos que coinciden con el término de búsqueda
+          
           const results = data.filter(item => item.nombre.toLowerCase().includes(searchTerm));
   
-          // Ahora puedes mostrar los resultados o realizar otras acciones con ellos
           console.log(results);
         })
         .catch(error => {
@@ -275,50 +274,22 @@ fetch('packjase.json')
   function mostrarResultados(resultados) {
     const contenedorResultados = document.getElementById('search-results');
   
-    // Limpiar cualquier contenido previo en el contenedor de resultados
+    
     contenedorResultados.innerHTML = '';
   
     if (resultados.length === 0) {
-      // Mostrar un mensaje si no se encontraron resultados
+      
       contenedorResultados.textContent = 'No se encontraron resultados.';
     } else {
-      // Crear y agregar elementos HTML para mostrar los resultados
+     
       resultados.forEach(result => {
         const elementoHTML = document.createElement('div');
-        elementoHTML.textContent = result.nombre; // Supongamos que tienes un campo "nombre" en tu JSON
+        elementoHTML.textContent = result.nombre;
         contenedorResultados.appendChild(elementoHTML);
       });
     }
   }
   
-  ///// CODIGO PARA RELACIONAR CON MI JSON ///
-
-const contenedorProductos = document.getElementById("productos");
-
-// Realiza una solicitud AJAX para cargar el archivo JSON
-fetch("archivos.json")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    // Manipula los datos JSON y crea contenido HTML
-    const listaProductos = document.createElement("ul");
-
-    data.forEach((producto) => {
-      const itemProducto = document.createElement("li");
-      itemProducto.textContent = `${producto.nombre}: $${producto.precio.toFixed(2)}`;
-      listaProductos.appendChild(itemProducto);
-    });
-
-    // Agrega la lista al contenedor en tu página
-    contenedorProductos.appendChild(listaProductos);
-  })
-  .catch((error) => {
-    console.error("Error al cargar el archivo JSON:", error);
-  });
 
 
   //// CODIGO DISPLAY ///
@@ -364,3 +335,125 @@ document.addEventListener("DOMContentLoaded", function () {
         contenido.innerHTML = subpagina3.innerHTML;
     });
 });
+
+
+
+
+/// INTERACTIVIDAD CON MI JSON //
+
+const contenedor = document.getElementById("contenedor");
+
+
+const archivosJSON = [
+
+];
+
+
+function crearElementoProducto(producto) {
+  const divItem = document.createElement("div");
+  divItem.classList.add("item"); 
+
+  const imgProducto = document.createElement("img");
+  imgProducto.src = producto.imagen;
+  imgProducto.alt = producto.nombre;
+
+  const nombreProducto = document.createElement("div");
+  nombreProducto.textContent = producto.nombre;
+  nombreProducto.classList.add("nombre"); 
+
+  const precioProducto = document.createElement("div");
+  precioProducto.textContent = `$${producto.precio.toFixed(2)}`;
+  precioProducto.classList.add("precio"); 
+
+ 
+  divItem.appendChild(imgProducto);
+  divItem.appendChild(nombreProducto);
+  divItem.appendChild(precioProducto);
+
+  return divItem;
+}
+
+
+datosJSON.forEach((producto) => {
+  const elementoProducto = crearElementoProducto(producto);
+  contenedor.appendChild(elementoProducto);
+});
+
+
+
+fetch("items.json")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    
+    console.log(data); 
+  })
+  .catch((error) => {
+    console.error("Error al cargar el archivo JSON:", error);
+  });
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const searchForm = document.getElementById("searchForm");
+    const itemNameInput = document.getElementById("itemName");
+    const searchResults = document.getElementById("searchResults");
+    let archivosJSON = []; 
+  
+   
+    function searchItemByName(itemName) {
+     
+      const results = dataJSON.filter((item) =>
+        item.nombre.toLowerCase().includes(itemName.toLowerCase())
+      );
+  
+      displayResults(results);
+    }
+  
+    
+    function displayResults(results) {
+      searchResults.innerHTML = ""; 
+  
+      if (results.length === 0) {
+        searchResults.textContent = "No se encontraron resultados.";
+        return;
+      }
+  
+      const resultList = document.createElement("ul");
+  
+      results.forEach((item) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `Nombre: ${item.nombre}, Tipo: ${item.tipo}`;
+        resultList.appendChild(listItem);
+      });
+  
+      searchResults.appendChild(resultList);
+    }
+  
+    
+    searchForm.addEventListener("submit", function (e) {
+      e.preventDefault(); 
+  
+      const itemName = itemNameInput.value.trim();
+      if (itemName === "") {
+        return; 
+      }
+  
+      searchItemByName(itemName);
+    });
+  
+   
+    fetch("archivos.json")
+      .then((response) => response.json())
+      .then((data) => {
+        dataJSON = data; 
+      })
+      .catch((error) => {
+        console.error("Error al cargar el archivos JSON:", error);
+      });
+  });
+  
