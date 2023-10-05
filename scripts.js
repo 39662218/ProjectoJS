@@ -457,3 +457,33 @@ fetch("items.json")
       });
   });
   
+
+
+  ///codigo local///
+
+
+fetch("archivos.json")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  })
+  .then((data) => {
+
+    localStorage.setItem("datosJSON", JSON.stringify(data));
+
+  
+    const datosGuardados = JSON.parse(localStorage.getItem("datosJSON"));
+    
+
+    console.log(datosGuardados[0].tipo); 
+    console.log(datosGuardados[0].nombre); 
+    console.log(datosGuardados[0].imagen); 
+    console.log(datosGuardados[0].precio); 
+  })
+  .catch((error) => {
+    console.error("Error al cargar el archivo JSON:", error);
+  });
+
+
