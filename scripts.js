@@ -1,3 +1,7 @@
+
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 //Variable q hace visible del carrito
 var carritoVisible = false;
 
