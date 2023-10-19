@@ -1,6 +1,4 @@
 
-
-
 [
     
     {
@@ -203,26 +201,31 @@
       "precio": 15000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG DIO",
       "imagen": "../images/imagestotebag/jojos/jojos2.png",
       "precio": 25000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG",
       "imagen": "../images/imagestotebag/attackontitan/AOT3.png",
       "precio": 35000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG ROMA",
       "imagen": "../images/imagestotebag/jojos/jojos4.png",
       "precio": 18000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG JOLYNE",
       "imagen": "../images/imagestotebag/jojos/jojos5.png",
       "precio": 32000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG FULLGREEN",
       "imagen": "../images/imagestotebag/jojos/jojos6.png",
       "precio": 18000
@@ -233,46 +236,55 @@
       "precio": 54000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG LEVI",
       "imagen": "../images/imagestotebag/attackontitan/AOT6.png",
       "precio": 32000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG KILLUA",
       "imagen": "../images/imagestotebag/hunterxhunter/hunter1.png",
       "precio": 42800
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG EREN VS REINER",
       "imagen": "../images/imagestotebag/attackontitan/AOT2.png",
       "precio": 15000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG SOFTPINK",
       "imagen": "../images/imagestotebag/attackontitan/AOT5.png",
       "precio": 15000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG ORANGE",
       "imagen": "../images/imagestotebag/hunterxhunter/hunter4.png",
       "precio": 15000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG BESTIES",
       "imagen": "../images/imagestotebag/hunterxhunter/hunter2.png",
       "precio": 15000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG TITANES",
       "imagen": "../images/imagestotebag/attackontitan/AOT4.png",
       "precio": 14000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG BESTIES",
       "imagen": "../images/imagestotebag/hunterxhunter/hunter2.png",
       "precio": 19000
     },
     {
+      "tipo": "TOTEBAGS",
       "nombre": "TOTEBAG SOOVERGREEN",
       "imagen": "../images/imagestotebag/jojos/jojos3.png",
       "precio": 17000
