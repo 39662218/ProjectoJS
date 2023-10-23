@@ -625,7 +625,42 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
-  
+
+  fetch('archivos.json')
+      .then(response => response.json())
+      .then(data => {
+        const resultados = document.getElementById('resultados');
+        const inputBusqueda = document.getElementById('busqueda');
+
+        inputBusqueda.addEventListener('input', function() {
+          const busqueda = inputBusqueda.value.toLowerCase();
+          resultados.innerHTML = '';
+
+          const resultadosFiltrados = data.filter(item => {
+            // Filtrar por nombre o tipo
+            return item.nombre.toLowerCase().includes(busqueda) || item.tipo.toLowerCase().includes(busqueda);
+          });
+
+          resultadosFiltrados.forEach(item => {
+            const div = document.createElement('div');
+            
+            const img = document.createElement('img');
+            img.src = item.imagen;
+            img.alt = item.nombre;
+            div.appendChild(img);
+
+            const nombre = document.createElement('span');
+            nombre.textContent = item.nombre;
+            div.appendChild(nombre);
+
+            const precio = document.createElement('span');
+            precio.textContent = `Precio: ${item.precio} pesos`;
+            div.appendChild(precio);
+
+            resultados.appendChild(div);
+          });
+        });
+      });
 
 
     });
